@@ -5,7 +5,7 @@
     overflow: hidden;
     background-color: red;
     width: 100%;
-    position: fixed;
+
     top: 0px;
     height: 50px;
     display: flex;
@@ -46,4 +46,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
 }

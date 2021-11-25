@@ -1,13 +1,16 @@
 import './App.css';
 import Nav from './Components/Nav/Nav';
-import ItemList from './Components/ItemList';
+import ItemListC from './Components/ItemListC';
 
 function App() {
   return (
     <div className="App">
-
       <Nav/>
-      <ItemList saludo ="Hola"/>
+      <ItemListC saludo = 'HOLA'/>
+      <ItemListC saludo = 'PROBANDO'/>
+      
+      
+      
       
 
     </div>

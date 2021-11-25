@@ -4,7 +4,7 @@ import './Nav/styles.css'
 const ItemListC = (props) => {
     console.log(props)
     return (
-        <div>
+        <div className="titleContainer">
             <h1 className="title">{props.saludo}</h1>
         </div>
     )

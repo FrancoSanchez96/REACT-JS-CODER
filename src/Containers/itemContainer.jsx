@@ -1,13 +1,15 @@
 import React from 'react'
-
-const itemContainer = () => {
+import ItemCounts from '../Components/ItemCounts'
+import './Container.css'
+const ItemContainer = () => {
 
     
+    
     return (
-        <div>
-            
+        <div className="ItemContainer">
+            <ItemCounts stock='10' inictial='1'/>
         </div>
     )
 }
 
-export default itemContainer
+export default ItemContainer

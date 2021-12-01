@@ -1,15 +1,22 @@
 import React, { useState } from 'react'
 import './Components.css'
-const ItemCounts = (stock ,initial) => {
-    const [contador,setContador] = useState(initial);
+const ItemCounts = ({initialStock}) => {
+    const [contador,setContador] = useState(initialStock.initial);
+    const [cartCount,setCartCount]=useState(0)
+
+    const addCart = () =>{
+        
+    
+        setCartCount (cartCount +1)
+    }
 
 
     const sumarCount = () => {
-        if (contador < stock){
+        if (contador < initialStock.stock){
             setContador(contador +1)};
         }
     const restarCount = () => {
-        if (contador > initial){
+        if (contador > initialStock.initial){
             setContador(contador -1);
         }
         
@@ -21,6 +28,8 @@ const ItemCounts = (stock ,initial) => {
             <button onClick={sumarCount}className="btn">+</button>
             <span>{contador}</span>
             <button onClick={restarCount}className="btn">-</button>
+            <button onClick ={addCart}>Agregar al carrito</button>
+
            
         </div>
     )

@@ -1,11 +1,17 @@
 import React from 'react'
-import './Nav/styles.css'
+import Item from './Item'
 
-const ItemListC = (props) => {
-    console.log(props)
+
+const ItemListC = ({products}) => {
+    
     return (
-        <div className="titleContainer">
-            <h1 className="title">{props.saludo}</h1>
+        <div>
+            
+                {products.map(i =>{
+                    
+                <Item key ={i.id}product={i}/>
+                })}
+            
         </div>
     )
 }

@@ -4,8 +4,7 @@ import ItemCounts from './ItemCounts'
 
 //ITEMCOUNT
 const initialStock={
-    initial : 1,
-    stock : 12
+    initial : 1
   }
 
 const Item = ({product}) => {
@@ -23,9 +22,9 @@ const Item = ({product}) => {
                 {product.description}
             </p>
             <span>
-                {product.stock}
+               Disponibles: {product.stock}
             </span>
-            <ItemCounts initialStock={initialStock}/>
+            <ItemCounts initialStock={initialStock }stock={product.stock}/>
         </div>
     )
 }

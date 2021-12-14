@@ -1,6 +1,7 @@
 import './App.css';
 import Nav from './Components/Nav/Nav';
 import ItemContainer from './Containers/ItemContainer';
+import ItemDetailContainer from './Containers/ItemDetalContainer';
 
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
     <div className="App">
       <Nav/>
       <ItemContainer />
-
+      <ItemDetailContainer/>
      
       
       

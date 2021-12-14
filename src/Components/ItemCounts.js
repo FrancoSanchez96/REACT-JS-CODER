@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Components.css'
-const ItemCounts = ({initialStock}) => {
+const ItemCounts = ({initialStock,stock}) => {
     const [contador,setContador] = useState(initialStock.initial);
     const [cartCount,setCartCount]=useState(0)
 
@@ -12,7 +12,7 @@ const ItemCounts = ({initialStock}) => {
 
 
     const sumarCount = () => {
-        if (contador < initialStock.stock){
+        if (contador < stock){
             setContador(contador +1)};
         }
     const restarCount = () => {

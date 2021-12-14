@@ -1,13 +1,8 @@
 import React from 'react'
 import { useState ,useEffect } from 'react'
-
 import './Container.css'
-import ItemListC from '../Components/ItemListC'
-
-
-
-//ITEMS
-function getItems () {
+import ItemDetail from '../Components/ItemDetail'
+function getItem () {
     return new Promise ((resolve,reject)=>{
         const object =[
             {
@@ -37,38 +32,32 @@ function getItems () {
 
 
         ]
-        setTimeout(()=> resolve(object),3000)
+        setTimeout(()=> resolve(object[1]),2000)
     })
 }
+const ItemDetailContainer = () => {
+    const[itemDetail,setItems]=useState([])
+    useEffect(() => {
+        const item = getItem()
 
+        item.then(item=>{
 
-//COMPONENT
-
-
-const ItemContainer = () => {
-    const [listProduct,setListProduct]=useState([])
-    useEffect(()=>{
-        const list = getItems()
-
-        list.then(list =>{
+            setItems(item)
             
-            setListProduct(list)
         })
-        return(
+        return (
             () => {
-                setListProduct([])
-            }
-            )
-        },[])
+          setItems([])  
+        }
+        )
+    }, [])
+
 
     return (
-        <div className="ItemContainer">
-            
-            <ItemListC products ={listProduct}/>
-           
-            
+        <div>
+            <ItemDetail item={itemDetail}/>
         </div>
     )
 }
 
-export default ItemContainer
+export default ItemDetailContainer

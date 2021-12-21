@@ -1,4 +1,11 @@
 import React from 'react'
+import ItemCounts from './ItemCounts'
+
+//ITEMCOUNT
+const initialStock={
+    initial : 1
+  }
+
 
 const ItemDetail = ({item}) => {
     return (
@@ -14,7 +21,9 @@ const ItemDetail = ({item}) => {
                stock: 
                <br />
                {item.stock}
+
             </span>
+            <ItemCounts initialStock={initialStock }stock={item.stock}/>
             <span>
                 precio:
                 <br />

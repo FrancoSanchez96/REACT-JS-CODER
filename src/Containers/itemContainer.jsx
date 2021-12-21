@@ -1,65 +1,34 @@
 import React from 'react'
 import { useState ,useEffect } from 'react'
-
+import { getCategory } from '../productos'
 import './Container.css'
 import ItemListC from '../Components/ItemListC'
-
-
-
-//ITEMS
-function getItems () {
-    return new Promise ((resolve,reject)=>{
-        const object =[
-            {
-                id: 1,
-                name:'Teclado Red Dragon IIV',
-                price:8000,
-                img:"https://i.ibb.co/mydGNqk/teclado-red-dragon.jpg",
-                description:'Teclado Mecanico con luced LED inalambrico alta respuesta',
-                stock: 20
-            },
-            {
-                id: 2,
-                name:'Mouse Genius PRO SCORPION',
-                price:4000,
-                img:"https://i.ibb.co/Gx0Z3Pp/auriculares-hyperx.jpg",
-                description:'Mouse GAMER 5000 dpi con Software y Diseño ',
-                stock: 10
-            },
-            {
-                id: 3,
-                name:'Auriculares HyperX PRO',
-                price:10000,
-                img:"https://i.ibb.co/TgTS1hP/mouse-genius-scorpion.jpg",
-                description:'Auriculaes con sonido Ultra HD 4k Sensibit high LED',
-                stock: 5
-            }
-
-
-        ]
-        setTimeout(()=> resolve(object),3000)
-    })
-}
+import {useParams}from 'react-router-dom'
 
 
 //COMPONENT
 
 
 const ItemContainer = () => {
-    const [listProduct,setListProduct]=useState([])
-    useEffect(()=>{
-        const list = getItems()
 
-        list.then(list =>{
+    const [listProduct,setListProduct]=useState([])
+    const {categoryId} = useParams()
+
+
+
+    useEffect(()=>{
+        getCategory(categoryId).then(list =>{
             
             setListProduct(list)
+        }).catch(err =>{
+            console.log(err)
         })
         return(
             () => {
                 setListProduct([])
             }
             )
-        },[])
+        },[categoryId])
 
     return (
         <div className="ItemContainer">

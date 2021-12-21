@@ -1,11 +1,8 @@
 import React from 'react'
 import "./Components.css"
-import ItemCounts from './ItemCounts'
 
-//ITEMCOUNT
-const initialStock={
-    initial : 1
-  }
+import { Link } from 'react-router-dom'
+
 
 const Item = ({product}) => {
     console.log(product)
@@ -18,13 +15,12 @@ const Item = ({product}) => {
             <ul>
                 <img src={product.img} alt={product.name}/>
             </ul>
-            <p>
-                {product.description}
-            </p>
             <span>
-               Disponibles: {product.stock}
+                Price : ${product.price}
             </span>
-            <ItemCounts initialStock={initialStock }stock={product.stock}/>
+            <Link to={`/product/${product.id}`}>Ver Detalles </Link>
+ 
+
         </div>
     )
 }

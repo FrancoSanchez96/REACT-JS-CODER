@@ -1,15 +1,10 @@
 import React, { useState } from 'react'
 import './Components.css'
-const ItemCounts = ({initialStock,stock}) => {
+
+
+const ItemCounts = ({initialStock,stock,onAdd}) => {
     const [contador,setContador] = useState(initialStock.initial);
-    const [cartCount,setCartCount]=useState(0)
-
-    const addCart = () =>{
-        
-    
-        setCartCount (cartCount +1)
-    }
-
+  
 
     const sumarCount = () => {
         if (contador < stock){
@@ -30,7 +25,7 @@ const ItemCounts = ({initialStock,stock}) => {
                 <span>{contador}</span>
                 <button onClick={restarCount}className="btn">-</button>
             </div>
-            <button onClick ={addCart}>Agregar al carrito</button>
+            <button onClick ={()=>onAdd(contador)} >Agregar al carrito</button>
         </div>
     )
 }

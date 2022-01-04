@@ -10,11 +10,16 @@ const ItemCounts = ({initialStock,stock,onAdd}) => {
         if (contador < stock){
             setContador(contador +1)};
         }
+
+
     const restarCount = () => {
         if (contador > initialStock.initial){
             setContador(contador -1);
         }
         
+    }
+    function addToCart(){
+        onAdd(contador);
     }
 
     return (
@@ -25,7 +30,7 @@ const ItemCounts = ({initialStock,stock,onAdd}) => {
                 <span>{contador}</span>
                 <button onClick={restarCount}className="btn">-</button>
             </div>
-            <button onClick ={()=>onAdd(contador)} >Agregar al carrito</button>
+            <button onClick ={addToCart} >Agregar al carrito</button>
         </div>
     )
 }

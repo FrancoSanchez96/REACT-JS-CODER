@@ -2,6 +2,7 @@ import React from 'react'
 import ItemCounts from './ItemCounts'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import useCartContext from './CartContext'
 
 //ITEMCOUNT
 const initialStock={
@@ -12,11 +13,12 @@ const initialStock={
 const ItemDetail = ({item}) => {
 
     const [cartCount,setCartCount]=useState()
+    const {addItem,isInCart}= useCartContext();
 
 
-    const onAdd = (count) => {
-    setCartCount(count) 
-    alert (`agregaste ${count} items al carrito`);
+    function onAdd(qty){
+    setCartCount(qty);
+    addItem(item,qty);
     }
 
     return (
@@ -38,7 +40,7 @@ const ItemDetail = ({item}) => {
                {item.stock}
             </span>
 
-            {cartCount ?
+            {isInCart(item.id) ?
 
             <button>
             <Link to='/cart'>Terminar Compra</Link>

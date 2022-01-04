@@ -3,35 +3,37 @@ import Nav from './Components/Nav/Nav';
 import ItemContainer from './Containers/ItemContainer';
 import ItemDetailContainer from './Containers/ItemDetalContainer';
 import {BrowserRouter,Switch,Route} from 'react-router-dom'
+import { CartContextProvider } from './Components/CartContext';
 
 
 function App() {
 
   return (
-    <div className="App">
-      <BrowserRouter>
-      <Nav/>
-      <Switch>
+    <CartContextProvider>
+      <div className="App">
+        <BrowserRouter>
+        <Nav/>
+        <Switch>
 
-        <Route exact path ='/'>
-          <ItemContainer />
-        </Route>
+          <Route exact path ='/'>
+            <ItemContainer />
+          </Route>
 
-        <Route path="/category/:categoryId">
-          <ItemContainer/>
-        </Route>
+          <Route path="/category/:categoryId">
+            <ItemContainer/>
+          </Route>
 
-        <Route path ='/product/:paramId'>
-          <ItemDetailContainer/>
-        </Route>
+          <Route path ='/product/:paramId'>
+            <ItemDetailContainer/>
+          </Route>
 
-        </Switch>
-      </BrowserRouter>
+          </Switch>
+        </BrowserRouter>
+       </div>
+      </CartContextProvider>
       
       
-      
 
-    </div>
   );
 }
 

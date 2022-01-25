@@ -4,21 +4,25 @@ import './Container.css'
 import { getItemDetail } from '../productos'
 import ItemDetail from '../Components/ItemDetail'
 import {useParams}from 'react-router-dom'
+import { getDoc,doc } from 'firebase/firestore'
+import { db } from '../Service/Firebase/firebase'
 
 
 const ItemDetailContainer = () => {
 
-    const[itemDetail,setItems]=useState([])
+    const [itemDetail,setItems]=useState([])
+    const [loading,setLoading]=useState(true)
     const {paramId}=useParams()
     
     useEffect(() => {
-        const item = getItemDetail(paramId)
-
-        
-        item.then(item=>{
-
-            setItems(item)
-            
+        setLoading(true)
+        getDoc(doc(db,'items',paramId)).then((querySnapshot) =>{
+            const itemDetail ={id:querySnapshot.id, ...querySnapshot.data()}
+            setItems(itemDetail)
+        }).catch((error)=>{
+            console.log('error al cargar')
+        }).finally(()=>{
+            setLoading(false)
         })
         return (
             () => {
@@ -27,7 +31,9 @@ const ItemDetailContainer = () => {
         )
     }, [paramId])
 
-
+    if(loading){
+        return <h1>Loading...</h1>
+    }
     return (
         <div>
             {

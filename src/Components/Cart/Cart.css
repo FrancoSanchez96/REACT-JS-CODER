@@ -1,0 +1,28 @@
+.Container{
+    border:2px solid black;
+    width: 100%;
+    background-color: wheat;
+}
+.menu {
+    text-align:start;
+    background-color: black;
+    color: white;
+}
+.menu th {
+    padding: 20px;
+    border: 1px solid black;
+}
+h1{
+    text-align: center;
+}
+.CartItem{
+    text-align: start;
+}
+.CartItem img{
+    width: 200px;
+    height: 100px;
+}
+.CartItem td {
+    border: 1px solid black;
+    text-align: center;
+}

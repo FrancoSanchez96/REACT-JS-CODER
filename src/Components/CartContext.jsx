@@ -40,15 +40,24 @@ export  const CartContextProvider = ({children}) => {
 
 
     const QtyCart =()=>{
-        let totalItems = itemsCart.reduce((total,item)=>{
+        return itemsCart.reduce((total,item)=>{
             return (total + item.qty)
         },0)
-        return totalItems;
+        
     }
+
+    const removeFromCart = (id)=>{
+        //devolvemos el array productos en el carrito, filtrando solo items que no tengan el ID solicitado
+        let filteredCart = itemsCart.filter( (item) =>{
+            return item["id"] !== id
+        });
+        setItemsCart(filteredCart);
+        return filteredCart;
+      }
 
 
     return(
-        <CartContext.Provider value={{itemsCart ,addItem ,QtyCart,isInCart,clearCart}}>
+        <CartContext.Provider value={{itemsCart ,addItem ,QtyCart,isInCart,clearCart,removeFromCart}}>
             {children}
         </CartContext.Provider>
     )

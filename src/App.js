@@ -4,6 +4,7 @@ import ItemContainer from './Containers/ItemContainer';
 import ItemDetailContainer from './Containers/ItemDetalContainer';
 import {BrowserRouter,Switch,Route} from 'react-router-dom'
 import { CartContextProvider } from './Components/CartContext';
+import CartContainer from './Components/Cart/CartContainer';
 
 
 function App() {
@@ -26,7 +27,10 @@ function App() {
           <Route path ='/product/:paramId'>
             <ItemDetailContainer/>
           </Route>
+          <Route path='/cart'>
+            <CartContainer/>
 
+          </Route>
           </Switch>
         </BrowserRouter>
        </div>

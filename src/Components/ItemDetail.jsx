@@ -12,7 +12,7 @@ const initialStock={
 
 const ItemDetail = ({item}) => {
 
-    const [cartCount,setCartCount]=useState()
+    const [cartCount,setCartCount]=useState(0)
     const {addItem,isInCart}= useCartContext();
 
 
@@ -20,7 +20,7 @@ const ItemDetail = ({item}) => {
     setCartCount(qty);
     addItem(item,qty);
     }
-
+    
     return (
         <div className="Item">
 
@@ -41,7 +41,8 @@ const ItemDetail = ({item}) => {
             </span>
 
             {isInCart(item.id) ?
-
+            
+            
             <button>
             <Link to='/cart'>Terminar Compra</Link>
             </button>        
@@ -57,6 +58,7 @@ const ItemDetail = ({item}) => {
                 <br />
                 {item.price}$
             </span>
+
 
 
 
